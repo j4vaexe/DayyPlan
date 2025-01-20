@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DayyPlan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .task-container {
+            margin-top: 20px;
+        }
+        .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .task-item.completed span {
+            text-decoration: line-through;
+            color: gray;
+        }
+        .task-item span {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Schedule Your Task</h1>
+
+    <label for="startTime">Start Time:</label>
+    <select id="startTime">
+        <option value="" disabled selected>Select start time</option>
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+       <option value="12:00 PM">12:00 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="1:30 PM">1:30 PM</option>
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="2:30 PM">2:30 PM</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="3:30 PM">3:30 PM</option>
+        <option value="4:00 PM">4:00 PM</option>
+        <option value="4:30 PM">4:30 PM</option>
+        <option value="5:00 PM">5:00 PM</option>
+        <option value="5:30 PM">5:30 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="6:30 PM">6:30 PM</option>
+        <option value="7:00 PM">7:00 PM</option>
+        <option value="7:30 PM">7:30 PM</option>
+        <option value="8:00 PM">8:00 PM</option>
+        <option value="8:30 PM">8:30 PM</option>
+        <option value="9:00 PM">9:00 PM</option>
+        <option value="9:30 PM">9:30 PM</option>
+        <option value="10:00 PM">10:00 PM</option>
+        <option value="10:30 PM">10:30 PM</option>
+        <option value="11:00 PM">11:00 PM</option>
+        <option value="11:30 PM">11:30 PM</option>
+    </select>
+
+    <label for="endTime">End Time:</label>
+    <select id="endTime">
+        <option value="" disabled selected>Select end time</option>
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+       <option value="12:00 PM">12:00 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="1:30 PM">1:30 PM</option>
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="2:30 PM">2:30 PM</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="3:30 PM">3:30 PM</option>
+        <option value="4:00 PM">4:00 PM</option>
+        <option value="4:30 PM">4:30 PM</option>
+        <option value="5:00 PM">5:00 PM</option>
+        <option value="5:30 PM">5:30 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="6:30 PM">6:30 PM</option>
+        <option value="7:00 PM">7:00 PM</option>
+        <option value="7:30 PM">7:30 PM</option>
+        <option value="8:00 PM">8:00 PM</option>
+        <option value="8:30 PM">8:30 PM</option>
+        <option value="9:00 PM">9:00 PM</option>
+        <option value="9:30 PM">9:30 PM</option>
+        <option value="10:00 PM">10:00 PM</option>
+        <option value="10:30 PM">10:30 PM</option>
+        <option value="11:00 PM">11:00 PM</option>
+        <option value="11:30 PM">11:30 PM</option>
+    </select>
+
+    <div class="task-container">
+        <label for="taskDescription">Task Description:</label>
+        <input type="text" id="taskDescription" placeholder="Enter task description">
+    </div>
+
+    <button id="addTaskButton">Add Task</button>
+
+    <div class="output" id="taskOutput">
+        <h2>Scheduled Tasks:</h2>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        const startTime = document.getElementById('startTime');
+        const endTime = document.getElementById('endTime');
+        const taskDescription = document.getElementById('taskDescription');
+        const addTaskButton = document.getElementById('addTaskButton');
+        const taskList = document.getElementById('taskList');
+
+        addTaskButton.addEventListener('click', () => {
+            const start = startTime.value;
+            const end = endTime.value;
+            const description = taskDescription.value.trim();
+
+            if (!start || !end || !description) {
+                alert('Please fill in all fields to add a task.');
+                return;
+            }
+
+            if (new Date(`1970-01-01T${end}`) <= new Date(`1970-01-01T${start}`)) {
+                alert('End time must be later than start time.');
+                return;
+            }
+
+            const taskItem = document.createElement('li');
+            taskItem.className = 'task-item';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.addEventListener('change', () => {
+                taskItem.classList.toggle('completed', checkbox.checked);
+            });
+
+            const taskText = document.createElement('span');
+            taskText.textContent = `${start} - ${end}: ${description}`;
+
+            taskItem.appendChild(checkbox);
+            taskItem.appendChild(taskText);
+            taskList.appendChild(taskItem);
+
+            // Clear inputs after adding the task
+            startTime.value = '';
+            endTime.value = '';
+            taskDescription.value = '';
+        });
+    </script>
+</body>
+</html>

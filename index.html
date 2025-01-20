@@ -7,126 +7,197 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .task-container {
-            margin-top: 20px;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
         }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .night-mode-toggle {
+            display: flex;
+            align-items: center;
+        }
+
+        .night-mode-toggle label {
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+
+        .task-container, .output {
+            padding: 20px;
+        }
+
         .output {
             margin-top: 20px;
             font-size: 1.2em;
-            color: #333;
         }
+
         .task-item {
             display: flex;
             align-items: center;
             margin-bottom: 10px;
         }
+
         .task-item.completed span {
             text-decoration: line-through;
             color: gray;
         }
+
         .task-item span {
             margin-left: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Schedule Your Task</h1>
-
-    <label for="startTime">Start Time:</label>
-    <select id="startTime">
-        <option value="" disabled selected>Select start time</option>
-        <option value="6:00 AM">6:00 AM</option>
-        <option value="6:00 AM">6:00 AM</option>
-        <option value="7:00 AM">7:00 AM</option>
-        <option value="7:00 AM">7:00 AM</option>
-        <option value="8:00 AM">8:00 AM</option>
-        <option value="8:00 AM">8:00 AM</option>
-        <option value="9:00 AM">9:00 AM</option>
-        <option value="9:00 AM">9:00 AM</option>
-        <option value="10:00 AM">10:00 AM</option>
-        <option value="10:00 AM">10:00 AM</option>
-        <option value="11:00 AM">11:00 AM</option>
-        <option value="11:00 AM">11:00 AM</option>
-        <option value="12:00 PM">12:00 PM</option>
-       <option value="12:00 PM">12:00 PM</option>
-        <option value="1:00 PM">1:00 PM</option>
-        <option value="1:30 PM">1:30 PM</option>
-        <option value="2:00 PM">2:00 PM</option>
-        <option value="2:30 PM">2:30 PM</option>
-        <option value="3:00 PM">3:00 PM</option>
-        <option value="3:30 PM">3:30 PM</option>
-        <option value="4:00 PM">4:00 PM</option>
-        <option value="4:30 PM">4:30 PM</option>
-        <option value="5:00 PM">5:00 PM</option>
-        <option value="5:30 PM">5:30 PM</option>
-        <option value="6:00 PM">6:00 PM</option>
-        <option value="6:30 PM">6:30 PM</option>
-        <option value="7:00 PM">7:00 PM</option>
-        <option value="7:30 PM">7:30 PM</option>
-        <option value="8:00 PM">8:00 PM</option>
-        <option value="8:30 PM">8:30 PM</option>
-        <option value="9:00 PM">9:00 PM</option>
-        <option value="9:30 PM">9:30 PM</option>
-        <option value="10:00 PM">10:00 PM</option>
-        <option value="10:30 PM">10:30 PM</option>
-        <option value="11:00 PM">11:00 PM</option>
-        <option value="11:30 PM">11:30 PM</option>
-    </select>
-
-    <label for="endTime">End Time:</label>
-    <select id="endTime">
-        <option value="" disabled selected>Select end time</option>
-        <option value="6:00 AM">6:00 AM</option>
-        <option value="6:00 AM">6:00 AM</option>
-        <option value="7:00 AM">7:00 AM</option>
-        <option value="7:00 AM">7:00 AM</option>
-        <option value="8:00 AM">8:00 AM</option>
-        <option value="8:00 AM">8:00 AM</option>
-        <option value="9:00 AM">9:00 AM</option>
-        <option value="9:00 AM">9:00 AM</option>
-        <option value="10:00 AM">10:00 AM</option>
-        <option value="10:00 AM">10:00 AM</option>
-        <option value="11:00 AM">11:00 AM</option>
-        <option value="11:00 AM">11:00 AM</option>
-        <option value="12:00 PM">12:00 PM</option>
-       <option value="12:00 PM">12:00 PM</option>
-        <option value="1:00 PM">1:00 PM</option>
-        <option value="1:30 PM">1:30 PM</option>
-        <option value="2:00 PM">2:00 PM</option>
-        <option value="2:30 PM">2:30 PM</option>
-        <option value="3:00 PM">3:00 PM</option>
-        <option value="3:30 PM">3:30 PM</option>
-        <option value="4:00 PM">4:00 PM</option>
-        <option value="4:30 PM">4:30 PM</option>
-        <option value="5:00 PM">5:00 PM</option>
-        <option value="5:30 PM">5:30 PM</option>
-        <option value="6:00 PM">6:00 PM</option>
-        <option value="6:30 PM">6:30 PM</option>
-        <option value="7:00 PM">7:00 PM</option>
-        <option value="7:30 PM">7:30 PM</option>
-        <option value="8:00 PM">8:00 PM</option>
-        <option value="8:30 PM">8:30 PM</option>
-        <option value="9:00 PM">9:00 PM</option>
-        <option value="9:30 PM">9:30 PM</option>
-        <option value="10:00 PM">10:00 PM</option>
-        <option value="10:30 PM">10:30 PM</option>
-        <option value="11:00 PM">11:00 PM</option>
-        <option value="11:30 PM">11:30 PM</option>
-    </select>
+    <header>
+        <div class="logo">
+            <!-- Placeholder for your .png logo -->
+            <img src="icon2.png" alt="DayyPlan">
+            <h1>DayyPlan</h1>
+        </div>
+        <div class="night-mode-toggle">
+            <input type="checkbox" id="nightModeToggle">
+            <label for="nightModeToggle">Night Mode</label>
+        </div>
+    </header>
 
     <div class="task-container">
-        <label for="taskDescription">Task Description:</label>
-        <input type="text" id="taskDescription" placeholder="Enter task description">
-    </div>
+        <label for="startTime">Start Time:</label>
+        <select id="startTime">
+            <option value="" disabled selected>Select start time</option>
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="6:30 AM">6:30 AM</option>
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="7:30 AM">7:30 AM</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="8:30 AM">8:30 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="9:30 AM">9:30 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:30 AM">10:30 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="11:30 AM">11:30 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+       <option value="12:30 PM">12:30 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="1:30 PM">1:30 PM</option>
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="2:30 PM">2:30 PM</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="3:30 PM">3:30 PM</option>
+        <option value="4:00 PM">4:00 PM</option>
+        <option value="4:30 PM">4:30 PM</option>
+        <option value="5:00 PM">5:00 PM</option>
+        <option value="5:30 PM">5:30 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="6:30 PM">6:30 PM</option>
+        <option value="7:00 PM">7:00 PM</option>
+        <option value="7:30 PM">7:30 PM</option>
+        <option value="8:00 PM">8:00 PM</option>
+        <option value="8:30 PM">8:30 PM</option>
+        <option value="9:00 PM">9:00 PM</option>
+        <option value="9:30 PM">9:30 PM</option>
+        <option value="10:00 PM">10:00 PM</option>
+        <option value="10:30 PM">10:30 PM</option>
+        <option value="11:00 PM">11:00 PM</option>
+        <option value="11:30 PM">11:30 PM</option>
+        </select>
 
-    <button id="addTaskButton">Add Task</button>
+        <label for="endTime">End Time:</label>
+        <select id="endTime">
+            <option value="" disabled selected>Select end time</option>
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="6:30 AM">6:30 AM</option>
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="7:30 AM">7:30 AM</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="8:30 AM">8:30 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="9:30 AM">9:30 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:30 AM">10:30 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="11:30 AM">11:30 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+       <option value="12:30 PM">12:30 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="1:30 PM">1:30 PM</option>
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="2:30 PM">2:30 PM</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="3:30 PM">3:30 PM</option>
+        <option value="4:00 PM">4:00 PM</option>
+        <option value="4:30 PM">4:30 PM</option>
+        <option value="5:00 PM">5:00 PM</option>
+        <option value="5:30 PM">5:30 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="6:30 PM">6:30 PM</option>
+        <option value="7:00 PM">7:00 PM</option>
+        <option value="7:30 PM">7:30 PM</option>
+        <option value="8:00 PM">8:00 PM</option>
+        <option value="8:30 PM">8:30 PM</option>
+        <option value="9:00 PM">9:00 PM</option>
+        <option value="9:30 PM">9:30 PM</option>
+        <option value="10:00 PM">10:00 PM</option>
+        <option value="10:30 PM">10:30 PM</option>
+        <option value="11:00 PM">11:00 PM</option>
+        <option value="11:30 PM">11:30 PM</option>
+        </select>
+
+        <div class="task-container">
+            <label for="taskDescription">Task Description:</label>
+            <input type="text" id="taskDescription" placeholder="Enter task description">
+        </div>
+
+        <button id="addTaskButton">Add Task</button>
+    </div>
 
     <div class="output" id="taskOutput">
         <h2>Scheduled Tasks:</h2>
         <ul id="taskList"></ul>
     </div>
+
+    <footer>
+        <p>Powered by <strong>DayyPlan</strong> | Version 2.0 | <span style="font-style: italic;">Created by 'j4va'</span></p>
+        <p>© 2025 DayyPlan. All rights reserved.</p>
+        <p><span style="color: #00ff00;"><small><code>&#9745; DayyPlan - Seize The Day. Stay Productive.</code></small></span></p>
+    </footer>
+
 
     <script>
         const startTime = document.getElementById('startTime');
@@ -134,6 +205,7 @@
         const taskDescription = document.getElementById('taskDescription');
         const addTaskButton = document.getElementById('addTaskButton');
         const taskList = document.getElementById('taskList');
+        const nightModeToggle = document.getElementById('nightModeToggle');
 
         addTaskButton.addEventListener('click', () => {
             const start = startTime.value;
@@ -142,11 +214,6 @@
 
             if (!start || !end || !description) {
                 alert('Please fill in all fields to add a task.');
-                return;
-            }
-
-            if (new Date(`1970-01-01T${end}`) <= new Date(`1970-01-01T${start}`)) {
-                alert('End time must be later than start time.');
                 return;
             }
 
@@ -170,6 +237,11 @@
             startTime.value = '';
             endTime.value = '';
             taskDescription.value = '';
+        });
+
+        nightModeToggle.addEventListener('change', () => {
+            document.body.style.backgroundColor = nightModeToggle.checked ? '#222' : '#f4f4f9';
+            document.body.style.color = nightModeToggle.checked ? '#f4f4f9' : '#222';
         });
     </script>
 </body>
